@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
   Image,
   StatusBar,
@@ -7,8 +8,15 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { UserContext } from "../context/UserContext";
 
 const LoginScreen = ({ navigation }) => {
+  const handlePress = () => {
+    if (!email || !name) return alert("Please fill in all fields");
+    if (email === "" || name === "") return alert("Please fill in all fields");
+    navigation.navigate("Home");
+  };
+  const { email, setEmail, name, setName } = useContext(UserContext);
   return (
     <View style={styles.container}>
       <StatusBar barStyle={"dark-content"} backgroundColor="#FAFAFD" />
@@ -36,13 +44,20 @@ const LoginScreen = ({ navigation }) => {
         Let’s log in. Apply to jobs!
       </Text>
       <View>
-        <TextInput placeholder="Name" style={styles.input} />
-        <TextInput placeholder="Email" style={styles.input} />
+        <TextInput
+          placeholder="Name"
+          style={styles.input}
+          value={name}
+          onChangeText={(text) => setName(text)}
+        />
+        <TextInput
+          placeholder="Email"
+          style={styles.input}
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
         <TouchableOpacity>
-          <Text
-            style={styles.button}
-            onPress={() => navigation.navigate("Home")}
-          >
+          <Text style={styles.button} onPress={handlePress}>
             Log in
           </Text>
         </TouchableOpacity>

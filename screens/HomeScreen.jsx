@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
   FlatList,
   Image,
@@ -8,15 +9,17 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { UserContext } from "../context/UserContext";
 
 const HomeScreen = () => {
+  const { name, email } = useContext(UserContext);
   return (
     <View style={styles.container}>
       <StatusBar barStyle={"dark-content"} backgroundColor="#FAFAFD" />
       <View style={styles.profile}>
         <View>
-          <Text style={styles.profileName}>Eric Atsu</Text>
-          <Text style={styles.email}>eric@gmail.com</Text>
+          <Text style={styles.profileName}>{name}</Text>
+          <Text style={styles.email}>{email}</Text>
         </View>
         <Image source={require("../assets/Ellipse.png")} />
       </View>
@@ -44,7 +47,7 @@ const HomeScreen = () => {
                 company: "Facebook",
                 location: "Accra, Ghana",
                 salary: "$180,000",
-                image: require("../assets/facebook.png"),
+                image: require("../assets/Vector.png"),
               },
               {
                 key: "2",
@@ -53,6 +56,46 @@ const HomeScreen = () => {
                 location: "Accra, Ghana",
                 salary: "$160,000",
                 image: require("../assets/google.png"),
+              },
+              {
+                key: "4",
+                role: "Software Engineer",
+                company: "Github",
+                salary: "$92,000/y",
+                location: "Florida, US",
+                image: require("../assets/github.png"),
+              },
+              {
+                key: "5",
+                role: "Software Engineer",
+                company: "Pinterest",
+                salary: "$102,000/y",
+                location: "New York, US",
+                image: require("../assets/pinterest.png"),
+              },
+              {
+                key: "6",
+                role: "Data Analyst",
+                company: "Reddit",
+                salary: "$78,000/y",
+                location: "Washington, US",
+                image: require("../assets/reddit.png"),
+              },
+              {
+                key: "7",
+                role: "Machine Learning Engineer",
+                company: "Meta",
+                salary: "$120,000/y",
+                location: "California, US",
+                image: require("../assets/meta.png"),
+              },
+              {
+                key: "8",
+                role: "Artificial Intelligence Engineer",
+                company: "Microsoft",
+                salary: "$126,000/y",
+                location: "Boston, US",
+                image: require("../assets/microsoft.png"),
               },
             ]}
             keyExtractor={(item) => item.key}
@@ -66,7 +109,7 @@ const HomeScreen = () => {
                   <View style={styles.cardImage}>
                     <Image
                       source={item.image}
-                      style={{ width: 100, height: 100 }}
+                      //   style={{ width: 100, height: 100 }}
                       resizeMode="contain"
                     />
                   </View>
@@ -105,6 +148,7 @@ const HomeScreen = () => {
         </View>
         <View>
           <FlatList
+            nestedScrollEnabled
             data={[
               {
                 key: "1",
@@ -130,7 +174,48 @@ const HomeScreen = () => {
                 location: "Florida, US",
                 image: require("../assets/Vector.png"),
               },
+              {
+                key: "4",
+                role: "Software Engineer",
+                company: "Github",
+                salary: "$92,000/y",
+                location: "Florida, US",
+                image: require("../assets/github.png"),
+              },
+              {
+                key: "5",
+                role: "Software Engineer",
+                company: "Pinterest",
+                salary: "$102,000/y",
+                location: "New York, US",
+                image: require("../assets/pinterest.png"),
+              },
+              {
+                key: "6",
+                role: "Data Analyst",
+                company: "Reddit",
+                salary: "$78,000/y",
+                location: "Washington, US",
+                image: require("../assets/reddit.png"),
+              },
+              {
+                key: "7",
+                role: "Machine Learning Engineer",
+                company: "Meta",
+                salary: "$120,000/y",
+                location: "California, US",
+                image: require("../assets/meta.png"),
+              },
+              {
+                key: "8",
+                role: "Artificial Intelligence Engineer",
+                company: "Microsoft",
+                salary: "$126,000/y",
+                location: "Boston, US",
+                image: require("../assets/microsoft.png"),
+              },
             ]}
+            keyExtractor={(item) => item.key}
             renderItem={({ item }) => (
               <View style={styles.popularCard}>
                 <View style={styles.cardInfo}>
@@ -199,12 +284,12 @@ const styles = StyleSheet.create({
   },
   profileName: {
     fontWeight: "700",
-    fontSize: 25,
+    fontSize: 22,
     color: "#0D0D26",
   },
   email: {
     fontWeight: "400",
-    fontSize: 20,
+    fontSize: 15,
     color: "#95969D",
   },
   searchBar: {
@@ -272,7 +357,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
-    paddingTop: 10,
   },
   popularCard: {
     flexDirection: "row",
