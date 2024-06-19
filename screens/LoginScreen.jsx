@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 
-const Login = () => {
+const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <Text
@@ -46,11 +46,17 @@ const Login = () => {
         <View style={styles.line}></View>
       </View>
       <View style={styles.continueWithImages}>
-        <Image source={require("../assets/apple.png")} />
-        <Image source={require("../assets/google.png")} />
-        <Image source={require("../assets/facebook.png")} />
+        <TouchableOpacity>
+          <Image source={require("../assets/apple.png")} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={require("../assets/google.png")} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={require("../assets/facebook.png")} />
+        </TouchableOpacity>
       </View>
-      <View style={{ marginTop: 10 }}>
+      <View style={{ marginVertical: 10 }}>
         <Text style={{ textAlign: "center", color: "#AFB0B6" }}>
           Haven’t an account? <Text style={{ color: "#356899" }}>Register</Text>
         </Text>
@@ -102,4 +108,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default LoginScreen;
