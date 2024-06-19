@@ -1,5 +1,6 @@
 import {
   Image,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
@@ -7,9 +8,10 @@ import {
   View,
 } from "react-native";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <StatusBar barStyle={"dark-content"} backgroundColor="#FAFAFD" />
       <Text
         style={{
           color: "#356899",
@@ -37,7 +39,12 @@ const LoginScreen = () => {
         <TextInput placeholder="Name" style={styles.input} />
         <TextInput placeholder="Email" style={styles.input} />
         <TouchableOpacity>
-          <Text style={styles.button}>Log in</Text>
+          <Text
+            style={styles.button}
+            onPress={() => navigation.navigate("Home")}
+          >
+            Log in
+          </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.continueWith}>
